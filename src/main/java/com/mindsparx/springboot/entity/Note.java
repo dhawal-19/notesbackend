@@ -1,5 +1,11 @@
 package com.mindsparx.springboot.entity;
+import java.util.Date;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import lombok.Data;
 
 @Entity
@@ -13,5 +19,10 @@ public class Note {
 	private String title;
 	private String body;
 	private String category;
-	
+	@Column(name="created_at",nullable=false,updatable=false)
+	@CreationTimestamp
+	private Date createdAt;
+	@Column(name="updated_at")
+	@UpdateTimestamp
+	private Date updatedAt;
 }
